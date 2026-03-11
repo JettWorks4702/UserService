@@ -3,6 +3,7 @@ package com.project.userservice.entities;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
+import com.fasterxml.jackson.databind.PropertyNamingStrategy;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -42,5 +43,14 @@ public class UserInfoDTO
     @JsonProperty("profile_pic")
     private String profilePic;
 
+    public UserInfo transformToUserInfo() {
+        return UserInfo.builder()
+                .firstName(firstName)
+                .lastName(lastName)
+                .userId(userId)
+                .email(email)
+                .profilePic(profilePic)
+                .phoneNumber(phoneNumber).build();
+    }
 
 }
